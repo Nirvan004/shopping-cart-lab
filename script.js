@@ -16,6 +16,14 @@ function updateTotalPrice(amount) {
 function removeItem(event) {
   const item = event.target.closest('li');
   const price = parseFloat(item.dataset.price);
+  if (!item) {
+    console.warn("No cart item found to remove.");
+    return;
+  }
+  if (cart.children.length === 0) {
+    console.warn("Cart is already empty — nothing to remove.");
+    return;
+  }
   updateTotalPrice(-price);
   item.remove();
 }
@@ -27,7 +35,7 @@ function addItem() {
     alert('Please enter a valid product name and price.');
     return;
   }
-  
+
   const li = document.createElement('li');
   li.classList.add('cart-item');
   li.dataset.price = price;
