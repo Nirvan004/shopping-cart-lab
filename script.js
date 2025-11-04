@@ -47,7 +47,7 @@ function addItem() {
   `;
 
   li.querySelector('.remove-btn').addEventListener('click', removeItem);
-  li.querySelector('.quantity').addEventListener('input', updateQuantity);
+  //li.querySelector('.quantity').addEventListener('input', updateQuantity); the optional part would go here
 
   cart.appendChild(li);
 
@@ -55,3 +55,4 @@ function addItem() {
   productNameInput.value = '';
   productPriceInput.value = '';
 }
+addProductButton.addEventListener('click', addItem);
