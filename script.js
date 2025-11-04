@@ -22,6 +22,12 @@ function removeItem(event) {
 function addItem() {
   const name = productNameInput.value.trim();
   const price = parseFloat(productPriceInput.value);
+
+  if (name === '' || isNaN(price) || price <= 0) {
+    alert('Please enter a valid product name and price.');
+    return;
+  }
+  
   const li = document.createElement('li');
   li.classList.add('cart-item');
   li.dataset.price = price;
