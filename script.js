@@ -19,3 +19,25 @@ function removeItem(event) {
   updateTotalPrice(-price);
   item.remove();
 }
+function addItem() {
+  const name = productNameInput.value.trim();
+  const price = parseFloat(productPriceInput.value);
+  const li = document.createElement('li');
+  li.classList.add('cart-item');
+  li.dataset.price = price;
+
+  li.innerHTML = `
+    <span>${name} - $${price.toFixed(2)}</span>
+    <input type="number" class="quantity" value="1" min="1">
+    <button class="remove-btn">Remove</button>
+  `;
+
+  li.querySelector('.remove-btn').addEventListener('click', removeItem);
+  li.querySelector('.quantity').addEventListener('input', updateQuantity);
+
+  cart.appendChild(li);
+
+  updateTotalPrice();
+  productNameInput.value = '';
+  productPriceInput.value = '';
+}
